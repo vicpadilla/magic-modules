@@ -566,7 +566,7 @@ func TestAccComputeDisk_pdHyperDiskEnableConfidentialCompute(t *testing.T) {
 
 	VcrTest(t, resource.TestCase{
 		PreCheck:                 func() { acctest.AccTestPreCheck(t) },
-		ProtoV5ProviderFactories: ProtoV5ProviderFactories(t),
+		ProtoV5ProviderFactories: acctest.ProtoV5ProviderFactories(t),
 		CheckDestroy:             testAccCheckComputeDiskDestroyProducer(t),
 		Steps: []resource.TestStep{
 			{
@@ -1060,7 +1060,7 @@ resource "google_compute_instance_group_manager" "manager" {
 }
 
 func testAccComputeDisk_pdHyperDiskEnableConfidentialCompute(context map[string]interface{}) string {
-	return Nprintf(`
+	return acctest.Nprintf(`
 	resource "google_compute_disk" "foobar" {
 		name                        = "tf-test-ecc-%{random_suffix}"
 		size                        = %{disk_size}
