@@ -43,3 +43,15 @@ func ProtoV5ProviderFactories(t *testing.T) map[string]func() (tfprotov5.Provide
 func ProtoV5ProviderBetaFactories(t *testing.T) map[string]func() (tfprotov5.ProviderServer, error) {
 	return acctest.ProtoV5ProviderBetaFactories(t)
 }
+
+// Deprecated: For backward compatibility testBucketName is still working,
+// but all new code should use TestBucketName in the acctest package instead.
+func testBucketName(t *testing.T) string {
+	return acctest.TestBucketName(t)
+}
+
+// Deprecated: For backward compatibility createZIPArchiveForCloudFunctionSource is still working,
+// but all new code should use CreateZIPArchiveForCloudFunctionSource in the acctest package instead.
+func createZIPArchiveForCloudFunctionSource(t *testing.T, sourcePath string) string {
+	return acctest.CreateZIPArchiveForCloudFunctionSource(t, sourcePath)
+}
