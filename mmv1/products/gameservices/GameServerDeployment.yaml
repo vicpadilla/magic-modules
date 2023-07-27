@@ -80,7 +80,7 @@ properties:
     url_param_only: true
     default_value: global
     description: Location of the Deployment.
-  - !ruby/object:Api::Type::KeyValuePairs
+  - !ruby/object:Api::Type::KeyValueLabels
     name: labels
     description: |-
       The labels associated with this game server deployment. Each label is a

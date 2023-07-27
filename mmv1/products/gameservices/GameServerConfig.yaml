@@ -86,7 +86,7 @@ properties:
   - !ruby/object:Api::Type::String
     name: description
     description: The description of the game server config.
-  - !ruby/object:Api::Type::KeyValuePairs
+  - !ruby/object:Api::Type::KeyValueLabels
     name: labels
     description: |-
       The labels associated with this game server config. Each label is a
