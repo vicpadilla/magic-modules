@@ -16,6 +16,7 @@ require 'api/resource/iam_policy'
 require 'api/resource/nested_query'
 require 'api/resource/reference_links'
 require 'google/string_utils'
+require 'google/logger'
 
 module Api
   # An object available in the product
@@ -435,6 +436,23 @@ module Api
       !@transport&.decoder.nil?
     end
 
+    def add_labels_related_field(props)
+      props.each do |p|
+        if p.is_a? Api::Type::KeyValueLabels
+          effective_labels = Api::Type::KeyValuePairs.new
+          effective_labels.instance_variable_set(:@name, "effective_labels")
+          effective_labels.instance_variable_set(:@output, true)
+          effective_labels.instance_variable_set(:@api_name, "labels")
+          effective_labels.instance_variable_set(:@description, "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.")
+
+          props << effective_labels
+        elsif (p.is_a? Api::Type::NestedObject) && (!p.nested_properties.nil?)
+          transformed = add_labels_related_field(p.nested_properties)
+          p.instance_variable_set(:@properties, transformed)
+        end
+      end
+      props
+    end
     # ====================
     # Version-related methods
     # ====================
