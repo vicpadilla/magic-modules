@@ -13,3 +13,6 @@ complete output, running presubmit tests, and updating the providers following y
 change.
 
 For information on how to use or contribute to Magic Modules, see [the documentation](https://googlecloudplatform.github.io/magic-modules).
+
+## vicpadilla
+My manual test
